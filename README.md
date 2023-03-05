@@ -45,4 +45,13 @@ require('fs')到的是什么意思
 js有哪些模块化规范
 CommonJS、ADM、UMD、ECMAScript Module
 
-## 模块化开发规范
+## 模块化开发规范--ECMAScript
+ > Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.
+ 错误的提示是需要配置package.json
+> internal/process/esm_loader.js:74
+> internalBinding('errors').triggerUncaughtException(
+> Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/ultimater/Downloads/Github/Nodejs/base/ex' imported from /Users/ultimater/Downloads/Github/Nodejs/base/im.js
+// 模块没有找到，原因是引入路径需要写后缀
+
+## npm包管理器
+npm init [-y] 初始package
