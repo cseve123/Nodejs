@@ -47,11 +47,44 @@ js有哪些模块化规范
 
 ## 模块化开发规范--ECMAScript
 > Warning: To load an ES module, set "type": "module" in the package.json or use the .mjs extension.  
-错误的提示是需要配置package.json  
+// 错误的提示是需要配置package.json  
 > internal/process/esm_loader.js:74  
 > internalBinding('errors').triggerUncaughtException(  
 > Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/ultimater/Downloads/Github/Nodejs/base/ex' imported from /Users/ultimater/Downloads/Github/Nodejs/base/im.js  
-模块没有找到，原因是引入路径需要写后缀  
+// 模块没有找到，原因是引入路径需要写后缀  
 
 ## npm包管理器
 npm init [-y] 初始package  
+
+## 脚手架
+是什么？  
+全局命令行工具  
+创建初始化代码文件及目录  
+基本能力？  
+全局命令行执行能力  
+命令行交互能力  
+项目初始化代码下载能力  
+如何实现自己的脚手架工具思路？  
+1. 创建自定义全局命令  
+2. 命令参数接收处理  
+3. 终端交互  
+4. 下载远程项目代码  
+5. 项目初始化完成提示  
+> 如 npm init vite@latest
+
+## 脚手架-自定义全局指令
+1. 需要package里，有bin{}对象指令具体路径
+2. npm link 让命令生效的挂载
+3. bin里的文件做为入口需要声明代码  
+```
+// 意思是使用环境变量下的node运行
+#! /usr/bin/env node 
+```
+4. 原始取命令参数依赖process.argv
+```
+// mycli --help
+// 取索引2是因为已经有了默认的环境参数
+process.argv[2]
+```
+
+## 脚手架-commander 命令参数处理工具 第三方参数获取
