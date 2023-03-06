@@ -88,3 +88,36 @@ process.argv[2]
 ```
 
 ## 脚手架-commander 命令参数处理工具 第三方参数获取
+1. npm install commander
+2. const { program } = require('commander')
+3. program.option('-f --framework <xxxx>', 'dec') 创建了新的命令
+4. program.parse() 解析出来
+
+## 脚手架-commander 处理自定义的参数
+1. program.command('create <project> [other...]')
+2. .alias('crt') 别名
+3. .description('创建项目') 描述
+4. .action((project, args) => {}) 执行的内容
+5. program.parse() 最后都需要解析
+
+## 脚手架-commander 模块化拆分
+因为action里执行的内容特别多
+拆分出option command action,导出
+
+## 脚手架-inquirer 命令行问答交互
+1. npm install inquirer
+2. inquirer.prompt([{type: 'list', name: 'name', choices: [1,2,3], message: '描述'}]).then((answer)=>{}).catch((err)=>{})
+
+## 脚手架-download-git-repo 下载远程项目代码
+1. npm install download-git-repo
+2. download('url', 'dir', {cloen: tue}, function(err){})
+3. 注意url可以是direct:xxxx,下载github以外的代码
+
+## 脚手架-ora 下载等待时间交互
+1. npm install ora 
+2. const spinner = ora().start()
+3. 异步中spinner.succeed('') 或 spinner.fail('')
+
+## 脚手架-chalk 命令行渲染工具
+1. import chalk from 'chalk'
+2. console.log(chalk.blue('Hello world!'))
